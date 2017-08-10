@@ -8,9 +8,10 @@ Created on Tue Aug  8 21:05:56 2017
 
 import cozmo
 import time
-from cozmo.objects import LightCube1Id, LightCube2Id, LightCube3Id
+from Rob.objects import LightCube1Id, LightCube2Id, LightCube3Id
 
-class cozmo():
+
+class Rob(object):
     def __init__(self):
         self.cube = None
         self.state = 0
@@ -55,15 +56,15 @@ class cozmo():
         }
         return switcher.get(argument, "nothing")
 
-    def cubelight(self,robot: cozmo.robot.Robot):
+    def cubelight(self, robot: cozmo.robot.Robot):
         light =  self.numbers_to_strings(self.state)
         if self.cube is not None:
             self.cube.set_lights(light)
         else:
-            cozmo.logger.warning("Cozmo is not connected to a cube - check the battery.")
+            Rob.logger.warning("Cozmo is not connected to a cube - check the battery.")
     
-    def light_off(self,robot: cozmo.robot.Robot):
-        self.cube.set_lights(cozmo.lights.off_light)
+    def light_off(self, robot: cozmo.robot.Robot):
+        self.cube.set_lights(Rob.lights.off_light)
     
         # Keep the lights on for 10 seconds until the program exits
         #time.sleep(10)
